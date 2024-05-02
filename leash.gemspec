@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "Do Nothing Scripting for Ruby"
   # spec.homepage = "TODO: Put your gem's website or public repo URL here."
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 2.7.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
