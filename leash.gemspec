@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["tonyc.t.hsu@gmail.com"]
 
   spec.summary = "Do Nothing Scripting with Ruby"
-  spec.description = ~<<-DESC
+  spec.description = <<-DESC
     Leash provides a lightweight framework to implement "Do Nothing Scripting" with Ruby.
 
     A "do nothing script" is a script that encodes instructions of a manual procedure and encapsulates each step in a function.
