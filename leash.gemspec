@@ -9,15 +9,20 @@ Gem::Specification.new do |spec|
   spec.email = ["tonyc.t.hsu@gmail.com"]
 
   spec.summary = "Do Nothing Scripting with Ruby"
-  spec.description = "Do Nothing Scripting for Ruby"
-  # spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.description = ~<<-DESC
+    Leash provides a lightweight framework to implement "Do Nothing Scripting" with Ruby.
+
+    A "do nothing script" is a script that encodes instructions of a manual procedure and encapsulates each step in a function.
+    Making it easier to start small and gradually increase the level of automation.
+  DESC
+  spec.homepage = "https://github.com/TonyCTHsu/leash"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
-  # spec.metadata["homepage_uri"] = spec.homepage
-  # spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = spec.homepage
   # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.
