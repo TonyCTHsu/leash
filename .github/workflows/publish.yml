@@ -1,12 +1,19 @@
 name: Publish Gem
 
-on:
-  push:
-    tags:
-      - 'v*'
+on: workflow_dispatch
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/check.yml
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/test.yml
+
   push:
+    needs: [check, test]
     runs-on: ubuntu-latest
 
     permissions:
@@ -22,4 +29,4 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: '3.2.4'
-      - uses: rubygems/release-gem@v1
+      # - uses: rubygems/release-gem@v1

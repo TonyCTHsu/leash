@@ -2,9 +2,10 @@ name: Test
 
 on:
   push:
+  workflow_call:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     name: Test ${{ matrix.ruby }}
     strategy:
