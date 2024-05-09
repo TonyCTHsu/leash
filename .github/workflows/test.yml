@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ruby:${{ matrix.ruby_version }}
+      # https://github.com/actions/runner/issues/2033#issuecomment-1598547465
+      # fatal: detected dubious ownership in repository
+      options: --user 1001
     name: Test ${{ matrix.ruby_version }}
     strategy:
       matrix:
