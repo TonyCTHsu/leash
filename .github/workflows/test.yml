@@ -3,6 +3,8 @@ name: Test
 on:
   push:
   workflow_call:
+  schedule:
+    - cron: "0 10 * * *" # every day at 10:00 UTC
 
 jobs:
   test:
