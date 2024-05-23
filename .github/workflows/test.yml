@@ -34,6 +34,8 @@ jobs:
     - name: Install dependencies
       run: bundle install
     - name: Run tests
+      run: bundle exec rake spec
+    - name: Run tests with ITR
       env:
         DD_CIVISIBILITY_AGENTLESS_ENABLED: true
         DD_CIVISIBILITY_ITR_ENABLED: true
