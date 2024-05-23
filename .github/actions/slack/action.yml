@@ -1,5 +1,7 @@
 name: Slack Notification
+
 description: 'Send slack notification'
+
 inputs:
   message:
     description: 'Message to send'
@@ -10,6 +12,7 @@ inputs:
   token:
     description: 'Slack bot token'
     required: true
+
 runs:
   using: "composite"
   steps:
