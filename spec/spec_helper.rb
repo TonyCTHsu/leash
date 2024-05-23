@@ -13,3 +13,12 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+if ENV["DD_ENV"] == "ci"
+  Datadog.configure do |c|
+    c.service = "leash"
+
+    c.ci.enabled = true
+    c.ci.instrument :rspec
+  end
+end

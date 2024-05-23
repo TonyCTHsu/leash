@@ -4,7 +4,7 @@ on:
   push:
   workflow_call:
   schedule:
-    - cron: "0 10 * * *" # every day at 10:00 UTC
+    - cron: '0 10 * * *' # every day at 10:00 UTC
 
 jobs:
   test:
@@ -34,4 +34,9 @@ jobs:
     - name: Install dependencies
       run: bundle install
     - name: Run tests
+      env:
+        DD_CIVISIBILITY_AGENTLESS_ENABLED: true
+        DD_CIVISIBILITY_ITR_ENABLED: true
+        DD_API_KEY: ${{ secrets.DD_API_KEY }}
+        DD_ENV: ci
       run: bundle exec rake spec
