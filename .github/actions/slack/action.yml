@@ -1,0 +1,29 @@
+name: Slack Notification
+description: 'Send slack notification'
+inputs:
+  message:
+    description: 'Message to send'
+    required: true
+  token:
+    description: 'Slack bot token'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: slackapi/slack-github-action@v1.26.0
+      env:
+        SLACK_BOT_TOKEN: ${{ inputs.token }}
+      with:
+        channel-id: ${{ vars.SLACK_CHANNEL_ID }}
+        payload: |
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "${{ inputs.message }}"
+                }
+              }
+            ]
+          }

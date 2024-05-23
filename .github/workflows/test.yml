@@ -42,3 +42,13 @@ jobs:
         DD_API_KEY: ${{ secrets.DD_API_KEY }}
         DD_ENV: ci
       run: bundle exec rake spec
+
+    - if: ${{ success() }}
+      uses: ./.github/actions/slack
+      with:
+        message: ":tada: Tests passed!"
+
+    - if: ${{ failure() }}
+      uses: ./.github/actions/slack
+      with:
+        message: ":red-light: Tests failed!"
