@@ -47,8 +47,10 @@ jobs:
       uses: ./.github/actions/slack
       with:
         message: ":tada: Tests passed!"
+        token: ${{ secrets.SLACK_BOT_TOKEN }}
 
     - if: ${{ failure() }}
       uses: ./.github/actions/slack
       with:
         message: ":red-light: Tests failed!"
+        token: ${{ secrets.SLACK_BOT_TOKEN }}
