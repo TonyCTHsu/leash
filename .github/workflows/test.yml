@@ -52,7 +52,11 @@ jobs:
         name: Notify success
         uses: ./.github/actions/slack
         with:
-          message: ":tada: Tests passed!"
+          message: |
+            :tada: Tests passed!
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+            Workflow: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           channel: ${{ vars.SLACK_CHANNEL_ID }}
           token: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -60,6 +64,10 @@ jobs:
         uses: ./.github/actions/slack
         name: Notify failure
         with:
-          message: ":red-light: Tests failed!"
+          message: |
+            :red-light: Tests failed!
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+            Workflow: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           channel: ${{ vars.SLACK_CHANNEL_ID }}
           token: ${{ secrets.SLACK_BOT_TOKEN }}

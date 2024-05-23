@@ -21,15 +21,4 @@ runs:
         SLACK_BOT_TOKEN: ${{ inputs.token }}
       with:
         channel-id: ${{ inputs.channel }}
-        payload: |
-          {
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "${{ inputs.message }}"
-                }
-              }
-            ]
-          }
+        slack-message: ${{ inputs.message }}
