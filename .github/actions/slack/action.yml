@@ -4,6 +4,9 @@ inputs:
   message:
     description: 'Message to send'
     required: true
+  channel:
+    description: 'Slack channel ID'
+    required: true
   token:
     description: 'Slack bot token'
     required: true
@@ -14,7 +17,7 @@ runs:
       env:
         SLACK_BOT_TOKEN: ${{ inputs.token }}
       with:
-        channel-id: ${{ vars.SLACK_CHANNEL_ID }}
+        channel-id: ${{ inputs.channel }}
         payload: |
           {
             "blocks": [
