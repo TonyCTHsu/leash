@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "leash"
-require "datadog/ci"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -16,6 +15,8 @@ RSpec.configure do |config|
 end
 
 if ENV["DD_ENV"] == "ci"
+  require "datadog/ci"
+
   Datadog.configure do |c|
     c.service = "leash"
 
