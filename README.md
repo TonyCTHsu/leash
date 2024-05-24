@@ -1,6 +1,7 @@
 # Leash
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/TonyCTHsu/leash/test.yml?style=for-the-badge&logo=github)
+![Gem Version](https://img.shields.io/gem/v/leash?style=for-the-badge&logo=rubygems&logoColor=orange&color=orange) 
 
 `Leash` provides a lightweight framework to implement "Do Nothing Scripting" with Ruby.
 
