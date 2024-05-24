@@ -42,3 +42,32 @@ jobs:
         DD_API_KEY: ${{ secrets.DD_API_KEY }}
         DD_ENV: ci
       run: bundle exec rake spec
+
+  notify:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - if: ${{ needs.test.result == 'success' }}
+        name: Notify success
+        uses: ./.github/actions/slack
+        with:
+          message: |
+            :tada: Tests passed!
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+            Workflow: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          channel: ${{ vars.SLACK_CHANNEL_ID }}
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+
+      - if: ${{ needs.test.result == 'failure' }}
+        uses: ./.github/actions/slack
+        name: Notify failure
+        with:
+          message: |
+            :red-light: Tests failed!
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+            Workflow: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          channel: ${{ vars.SLACK_CHANNEL_ID }}
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
