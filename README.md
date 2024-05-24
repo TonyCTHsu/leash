@@ -1,5 +1,7 @@
 # Leash
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/TonyCTHsu/leash/test.yml?style=for-the-badge&logo=github)
+
 `Leash` provides a lightweight framework to implement "Do Nothing Scripting" with Ruby.
 
 A "do nothing script" is a script that encodes instructions of a manual procedure and encapsulating each step in a function. Making it easier to start small and gradually increase the level of automation.
