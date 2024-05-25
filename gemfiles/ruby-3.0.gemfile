@@ -5,14 +5,14 @@ source "https://rubygems.org"
 gemspec path: ".."
 
 gem "rake", "~> 13.0"
-gem "standard", "~> 1.0", require: false
 
 group :test do
   gem "rspec", "~> 3.0", require: false
   gem "datadog-ci", "~> 1.0.0.beta5", require: false
 end
 
-group :development do
+group :check do
+  gem "standard", "~> 1.0", require: false
   gem "steep", "~> 1.6", require: false
   gem "rbs", "~> 3.4", require: false
 end
