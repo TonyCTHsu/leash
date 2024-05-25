@@ -14,5 +14,4 @@ end
 group :check do
   gem "standard", "~> 1.0", require: false
   gem "steep", "~> 1.6", require: false
-  gem "rbs", "~> 3.4", require: false
 end
