@@ -1,7 +1,7 @@
 # Leash
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/TonyCTHsu/leash/test.yml?style=for-the-badge&logo=github)
-![Gem Version](https://img.shields.io/gem/v/leash?style=for-the-badge&logo=rubygems&logoColor=orange&color=orange) 
+![Gem Version](https://img.shields.io/gem/v/leash?style=for-the-badge&logo=rubygems&logoColor=orange&color=orange)
 
 `Leash` provides a lightweight framework to implement "Do Nothing Scripting" with Ruby.
 
@@ -63,7 +63,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/TonyCTHsu/leash. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/TonyCTHsu/leash/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/TonyCTHsu/leash. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](docs/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -71,4 +71,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Leash project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/TonyCTHsu/leash/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Leash project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](docs/CODE_OF_CONDUCT.md).
