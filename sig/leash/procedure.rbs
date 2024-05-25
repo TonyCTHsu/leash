@@ -1,0 +1,25 @@
+module Leash
+  class Procedure
+    @title: String
+
+    @options: Hash[untyped, untyped]
+
+    @steps: Array[Step]
+
+    attr_reader title: String
+
+    attr_reader options: Hash[untyped, untyped]
+
+    attr_reader steps: Array[Step]
+
+    def initialize: (String title, ?Hash[untyped, untyped] options) ?{ (self)[self: self] -> void } -> void
+
+    def step: (String description, ?untyped? action) { () -> untyped } -> untyped
+
+    def run: () -> void
+
+    def render: () -> String
+
+    def length: () -> Integer
+  end
+end

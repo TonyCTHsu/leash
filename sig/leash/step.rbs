@@ -1,0 +1,15 @@
+module Leash
+  class Step
+    @description: String
+
+    @action: untyped
+
+    attr_reader description: String
+
+    attr_reader action: untyped
+
+    def initialize: (description: String, action: untyped) -> void
+
+    def run: () -> void
+  end
+end

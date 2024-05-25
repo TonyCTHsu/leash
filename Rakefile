@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
-require "bundler/gem_tasks"
-require "rspec/core/rake_task"
+# load rake tasks from tasks directory
+Dir.glob(File.join(__dir__ || Dir.pwd, "tasks", "**", "*.rake")) { |f| import f }
 
-RSpec::Core::RakeTask.new(:spec)
-
-require "standard/rake"
-
-task default: %i[standard spec]
+task default: %i[spec]
