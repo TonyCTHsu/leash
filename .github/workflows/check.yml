@@ -17,3 +17,5 @@ jobs:
         bundler-cache: true
     - name: Lint with standardrb
       run: bundle exec rake standard
+    - name: Typecheck with steep
+      run: bundle exec steep check
