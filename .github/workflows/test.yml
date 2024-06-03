@@ -14,9 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ruby:${{ matrix.ruby_version }}
-      # https://github.com/actions/runner/issues/2033#issuecomment-1598547465
-      # fatal: detected dubious ownership in repository
-      options: --user 1001
     name: Test ${{ matrix.ruby_version }}
     strategy:
       matrix:
@@ -28,8 +25,15 @@ jobs:
           - '2.7'
     steps:
     - uses: actions/checkout@v4
+    - name: Fix git
+      # https://github.com/actions/runner/issues/2033
+      run: chown -R $(id -u):$(id -g) $(pwd)
     - name: Ruby version
       run: ruby -v
+    - name: Update gem
+      run: |
+        gem update --system 3.3.27
+        gem update --system || echo "Fail to update to latest gem version"
     - name: Gem version
       run: gem -v
     - name: Bundler version
