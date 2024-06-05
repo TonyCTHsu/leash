@@ -51,8 +51,9 @@ jobs:
       run: bundle exec rake spec
 
   notify:
-    needs: test
     runs-on: ubuntu-latest
+    needs: test
+    if: always()
     steps:
       - uses: actions/checkout@v4
       - if: ${{ needs.test.result == 'success' }}
@@ -60,9 +61,9 @@ jobs:
         uses: ./.github/actions/slack
         with:
           message: |-
-            :github-check: ${{ github.ref_type }}: ${{ github.ref_name }}
+            :github: ${{ github.repository }} https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-            :github: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            :github-check: ${{ github.ref_type }}: ${{ github.ref_name }}
           channel: ${{ vars.SLACK_CHANNEL_ID }}
           token: ${{ secrets.SLACK_BOT_TOKEN }}
 
@@ -71,8 +72,8 @@ jobs:
         name: Notify failure
         with:
           message: |-
-            :red-light: ${{ github.ref_type }}: ${{ github.ref_name }}
+            :github: ${{ github.repository }} https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-            :github: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            :red-light: ${{ github.ref_type }}: ${{ github.ref_name }}
           channel: ${{ vars.SLACK_CHANNEL_ID }}
           token: ${{ secrets.SLACK_BOT_TOKEN }}
