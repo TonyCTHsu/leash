@@ -1,0 +1,29 @@
+name: Vaccine
+
+on:
+  workflow_dispatch:
+    inputs:
+      pipeline:
+        description: Pipeline ID
+        required: true
+
+jobs:
+  package:
+    name: Decompose injection artifacts
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: DataDog/datadog-packages
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'
+    - name: Decompose
+      run: |
+        go run ./cmd/datadog-package decompose --os linux --arch amd64 registry.ddbuild.io/ci/remote-updates/datadog-apm-library-ruby:pipeline-${{ inputs.pipeline }}-1 ./ruby
+    - name: Upload contents
+      uses: actions/upload-artifact@v4
+      with:
+        name: ruby cont ${{ inputs.pipeline }}
+        path: ruby/contents
