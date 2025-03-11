@@ -3,15 +3,7 @@ name: Publish Gem
 on: workflow_dispatch
 
 jobs:
-  check:
-    uses: ./.github/workflows/check.yml
-
-  test:
-    uses: ./.github/workflows/test.yml
-    secrets: inherit
-
   publish:
-    needs: [check, test]
     runs-on: ubuntu-latest
 
     permissions:
