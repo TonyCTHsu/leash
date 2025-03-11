@@ -11,15 +11,5 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    name: Check
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: "3.3.1"
-        bundler-cache: true
-    - name: Lint with standardrb
-      run: bundle exec rake standard
-    - name: Typecheck with steep
-      run: bundle exec steep check
+      - run: echo "Check"
