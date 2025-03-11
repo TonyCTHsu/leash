@@ -1,13 +1,12 @@
 name: Test
 
 on:
-  push:
-  workflow_call:
-    secrets:
-      SLACK_BOT_TOKEN:
-        required: true
-  schedule:
-    - cron: '0 7 * * *'
+  workflow_run:
+    workflows: ["Check"]
+    types:
+      - completed
+    branches:
+      - master
 
 jobs:
   test:
@@ -42,18 +41,11 @@ jobs:
       run: bundle install
     - name: Run tests
       run: bundle exec rake spec
-    - name: Run tests with ITR
-      env:
-        DD_CIVISIBILITY_AGENTLESS_ENABLED: true
-        DD_CIVISIBILITY_ITR_ENABLED: true
-        DD_API_KEY: ${{ secrets.DD_API_KEY }}
-        DD_ENV: ci
-      run: bundle exec rake spec
 
   notify:
     runs-on: ubuntu-latest
     needs: test
-    if: always()
+    if: !cancelled()
     steps:
       - uses: actions/checkout@v4
       - if: ${{ needs.test.result == 'success' }}
